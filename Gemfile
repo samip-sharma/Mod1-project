@@ -7,3 +7,4 @@ gem "rake"
 gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'pry'
+gem 'json'
