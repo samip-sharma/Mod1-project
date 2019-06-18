@@ -21,7 +21,6 @@ class MusicAPI
 def song_preview
   @hash["data"][0]["preview"]
 end
-
 def artist_name
   @hash["data"][0]["artist"]["name"]
 end
@@ -31,4 +30,3 @@ def cover_picture
 end
 
 end
-MUSIC1=MusicAPI.new("adele","hello")
