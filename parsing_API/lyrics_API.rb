@@ -10,3 +10,6 @@ def lyricsAPI(artist, song)
   hash = JSON.parse(lyrics_data.body)
   return hash["lyrics"]
 end
+
+
+# "lyricssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss".each_char { |letter| print(letter); sleep(0.2) }

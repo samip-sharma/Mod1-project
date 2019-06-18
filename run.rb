@@ -1,13 +1,21 @@
 require_relative './config/environment.rb'
 require 'tty-prompt'
-prompt = TTY::Prompt.new
 
 
 
 puts "Welcome !!! To MusicIron"
 puts "Here you can play song previews and see lyrics"
 
+
+prompt = TTY::Prompt.new
 user_name=prompt.ask('What is your name?', default: "full name(lowercase)")
+
+if !User.find_by(name:user_name)
+  $user=User.create(user_name)
+else
+  $user=User.find_by(name:user_name)
+end
+
 
 puts "Enter artist name:"
 artist=gets.chomp
@@ -16,11 +24,16 @@ song_name=gets.chomp
 
 
 
+ # p create_playlist
 
- music1=MusicAPI.new(artist, song_name)
- p lyricsAPI(music1.artist_name,music1.song_title)
- play_music(music1.song_preview)
- display_picture(music1.cover_picture)
+p display_all_playlists
+
+
+ #
+ # music1=MusicAPI.new(artist, song_name)
+ # p lyricsAPI(music1.artist_name,music1.song_title)
+ # play_music(music1.song_preview)
+ # display_picture(music1.cover_picture)
  # p music1.song_preview
 
 
@@ -34,6 +47,7 @@ song_name=gets.chomp
 # song_name=gets.chomp
 
 
+# prompt = TTY::Prompt.new
 
 # option=prompt.select("Select an option:", %w(create_Playlist search_Song my_Playlist delete_Playlist))
 

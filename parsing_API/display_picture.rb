@@ -2,7 +2,7 @@ require "catpix_mini"
 
 def display_picture(url)
   CatpixMini::print_image url,
-   :limit_x => 0.5,
+   :limit_x => 1,
    :limit_y => 0,
    :center_x => true,
    :center_y => true,
