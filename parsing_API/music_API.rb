@@ -2,17 +2,33 @@ require "rest-client"
 require "pry"
 require "json"
 
-def musicAPI(artist, song)
-  artist = artist.split(" ").join("_")
-  song = song.split(" ").join("_")
-  url = "https://api.deezer.com/search?q=#{artist}_#{song}"
-  music_data = RestClient.get(url)
-  hash = JSON.parse(music_data)
-  song_title = hash["data"][0]["title"]
-  song_preview = hash["data"][0]["preview"]
-  artist_name = hash["data"][0]["artist"]["name"]
-  cover_picture = hash["data"][0]["artist"]["picture_big"]
-  binding.pry
+class MusicAPI
+  attr_reader :artist, :song
+  def initialize(artist,song)
+    @artist = artist.split(" ").join("_")
+    @song=song.split(" ").join("_")
+    url = "https://api.deezer.com/search?q=#{@artist}_#{@song}"
+    music_data = RestClient.get(url)
+    @hash = JSON.parse(music_data.body)
+  end
+
+
+  def song_title
+    @hash["data"][0]["title"]
+  end
+
+
+def song_preview
+  @hash["data"][0]["preview"]
 end
 
-print musicAPI("John Maus", "Rockets")
+def artist_name
+  @hash["data"][0]["artist"]["name"]
+end
+
+def cover_picture
+  @hash["data"][0]["artist"]["picture_big"]
+end
+
+end
+MUSIC1=MusicAPI.new("adele","hello")
