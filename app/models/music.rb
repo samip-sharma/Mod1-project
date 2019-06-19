@@ -1,4 +1,5 @@
 class Music < ActiveRecord::Base
-has_many :playlists
-has_many :users, through: :playlists
+has_many :playlistmusics
+has_many :playlists, through: :playlistmusics
+# belongs_to :user, through: :playlists
 end
