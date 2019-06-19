@@ -7,5 +7,4 @@ def play_music(link)
   elsif RbConfig::CONFIG["host_os"] =~ /linux|bsd/
    system "xdg-open #{link}"
   end
-
 end
