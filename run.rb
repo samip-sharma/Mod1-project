@@ -14,7 +14,8 @@ if User.find_by(name:user_name)
   userr=User.find_by(name:user_name)
   $user=userr.id
 else
-  $user=User.find_by(name:user_name).id
+  new=User.create(name:user_name)
+  $user=new.id
 end
 
 

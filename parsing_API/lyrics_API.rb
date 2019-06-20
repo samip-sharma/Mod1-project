@@ -12,6 +12,7 @@ def lyricsAPI(artist, song)
 
     hash["lyrics"].to_s.gsub(/\n/, ' ')
 
+
 end
 
 
