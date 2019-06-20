@@ -2,7 +2,7 @@ require_relative './config/environment.rb'
 require 'tty-prompt'
 
 
-
+system 'clear'
 puts "Welcome !!! To MusicIron"
 puts "Here you can play song previews and see lyrics"
 
@@ -10,31 +10,40 @@ puts "Here you can play song previews and see lyrics"
 prompt = TTY::Prompt.new
 user_name=prompt.ask('What is your name?', default: "full name(lowercase)")
 
-if !User.find_by(name:user_name)
-  $user=User.create(user_name)
+if User.find_by(name:user_name)
+  userr=User.find_by(name:user_name)
+  $user=userr.id
 else
-  $user=User.find_by(name:user_name)
+  new=User.create(name:user_name)
+  $user=new.id
 end
 
 
-puts "Enter artist name:"
-artist=gets.chomp
-puts "Enter song name:"
-song_name=gets.chomp
+tty_menus
+# ?
+# #
+# # ?
+# #
+# # #
+# # #
+# # # puts "Enter artist name:"
+# # # artist=gets.chomp
+# # # puts "Enter song name:"
+# # # song_name=gets.chomp
+# # #
+# # #
+# # #
+# # #
+# # #
+# # #  music1=MusicAPI.new(artist, song_name)
+# # #  p lyricsAPI(music1.artist_name,music1.song_title)
+# # #  play_music(music1.song_preview)
+# # #  display_picture(music1.cover_picture)
+# # #  p music1.song_preview
+# #
+# # ?
+# ?
 
-
-
- # p create_playlist
-
-p display_all_playlists
-
-
- #
- # music1=MusicAPI.new(artist, song_name)
- # p lyricsAPI(music1.artist_name,music1.song_title)
- # play_music(music1.song_preview)
- # display_picture(music1.cover_picture)
- # p music1.song_preview
 
 
 # if !User.find_by(name:user_name)
